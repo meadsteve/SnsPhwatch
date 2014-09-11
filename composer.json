@@ -1,0 +1,23 @@
+{
+    "name": "mead_steve/sns-phwatch",
+    "description": "Shove messages from sns into an s3 bucket",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Steve B",
+            "email": "meadsteve@gmail.com"
+        }
+    ],
+
+    "require": {
+        "league/flysystem": "0.5.6",
+        "silex/silex": "1.*",
+        "aws/aws-sdk-php": "2.6.15"
+    },
+
+    "autoload": {
+        "psr-4": {
+            "MeadSteve\\SnsPhwatch\\": "src/"
+        }
+    }
+}
