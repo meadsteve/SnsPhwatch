@@ -22,6 +22,13 @@ class App extends Application
         $this->post('/sns/{topic}', function($topic, Request $request) use ($app) {
             // Always json from sns apparently:
             $data = json_decode($request->getContent(), true);
+
+            // Store any subscrition info
+            if (isset($data['SubscribeURL'])) {
+                $app['s3_file_system']->write('subscriptions/' . $topic . '-suburl.txt', $data['SubscribeURL']);
+            }
+
+            // Store the actual message in s3
             $app['s3_file_system']->write($topic . '/' . $data['MessageId'] . '.message', $data['Message']);
             return 'Hello';
         });
