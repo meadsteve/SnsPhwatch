@@ -23,7 +23,7 @@ class App extends Application
             // Always json from sns apparently:
             $data = json_decode($request->getContent(), true);
 
-            // Store any subscrition info
+            // Store any subscription info
             if (isset($data['SubscribeURL'])) {
                 $app['s3_file_system']->write('subscriptions/' . $topic . '-suburl.txt', $data['SubscribeURL']);
             }
